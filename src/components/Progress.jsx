@@ -1,10 +1,12 @@
 import React from "react";
 import { Button, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useHistory, useLocation } from "react-router-dom";
 import { getRoute } from "../redux/actions";
 
 const Progress = () => {
+  const history = useHistory();
+  // const isAdd = useSelector((state) => state.addnew.addnew);
   const dispatch = useDispatch();
   const location = useLocation();
   const genre = location.pathname === "/";
@@ -64,24 +66,24 @@ const Progress = () => {
               flexDirection: "column",
             }}
           >
-            <Link to="/subgenre" style={{ textDecoration: "none" }}>
-              <Button
-                style={{
-                  borderRadius: "50%",
-                  fontSize: "1rem",
-                  width: "50px",
-                  height: "50px",
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-                variant="outline-dark"
-                disabled={genre}
-                active={subgenre}
-              >
-                2
-              </Button>
-            </Link>
+            <Button
+              style={{
+                borderRadius: "50%",
+                fontSize: "1rem",
+                width: "50px",
+                height: "50px",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+              variant="outline-dark"
+              disabled={genre}
+              active={subgenre}
+              onClick={() => history.push("/subgenre")}
+            >
+              2
+            </Button>
+
             <div>Subgenre</div>
           </div>
           <div
@@ -104,24 +106,23 @@ const Progress = () => {
               flexDirection: "column",
             }}
           >
-            <Link to="/addnew" style={{ textDecoration: "none" }}>
-              <Button
-                style={{
-                  borderRadius: "50%",
-                  fontSize: "1rem",
-                  width: "50px",
-                  height: "50px",
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-                variant="outline-dark"
-                disabled={!addnew}
-                active={addnew}
-              >
-                {addnew ? "3" : info ? "3" : "..."}
-              </Button>
-            </Link>
+            <Button
+              style={{
+                borderRadius: "50%",
+                fontSize: "1rem",
+                width: "50px",
+                height: "50px",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+              variant="outline-dark"
+              disabled={!addnew && !info}
+              active={addnew}
+              onClick={() => history.push("/addnew")}
+            >
+              {addnew ? "3" : info ? "3" : "..."}
+            </Button>
 
             <div className={genre ? "white" : subgenre ? "white" : null}>
               Add New Subgenre

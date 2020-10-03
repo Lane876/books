@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { Button, Col } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import books from "../data";
-import { setGenreId } from "../redux/actions";
+import { flag, setGenreId } from "../redux/actions";
 
 const Genres = () => {
   const [id, setid] = useState("");
@@ -16,6 +16,11 @@ const Genres = () => {
       dispatch(setGenreId(id));
     }
   }, [id, dispatch]);
+
+  const handleId = (id) => {
+    setid(id);
+    dispatch(flag(true));
+  };
 
   return (
     <div
@@ -31,7 +36,7 @@ const Genres = () => {
           <Button
             variant="outline-dark"
             className="m-1 rounded h-60 w-100"
-            onClick={() => setid(book.id)}
+            onClick={() => handleId(book.id)}
             active={id === book.id ? "active" : false}
             style={{
               margin: "0 auto",

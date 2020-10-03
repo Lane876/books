@@ -8,14 +8,11 @@ const InfoInput = () => {
   const subgenre = useSelector((state) => state.subgenre.subgenre);
   const bookid = useSelector((state) => state.active.active);
   const [isTrue, setIsTrue] = useState(true);
-  console.log(check);
 
   useEffect(() => {
-    {
-      books.map(
-        (book) => bookid === book.id && setIsTrue(book.subgenres[subgenre])
-      );
-    }
+    books.map(
+      (book) => bookid === book.id && setIsTrue(book.subgenres[subgenre])
+    );
   }, []);
 
   return (

@@ -1,33 +1,24 @@
 import React from "react";
 import { useEffect } from "react";
-import { useState } from "react";
+// import { useState } from "react";
 import { Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useLocation } from "react-router-dom";
-import { addNew, setSubgenre, getRoute } from "../redux/actions";
+import { addNew, setSubgenre, getRoute, flag } from "../redux/actions";
 
 const PrevNext = () => {
   const selected = useSelector((state) => state.subgenre.subgenre);
   const disabled = useSelector((state) => state.active.active);
   const addnew = useSelector((state) => state.addnew.addnew);
   const path = useSelector((state) => state.route.route);
+  const flagmark = useSelector((state) => state.flag.flag);
   const dispatch = useDispatch();
   const history = useHistory();
-  const [active, setActive] = useState(true);
-  const [route, setRoute] = useState("");
   const location = useLocation();
   const genres = location.pathname === "/";
   const subgenre = location.pathname === "/subgenre";
   const addsubgenre = location.pathname === "/addnew";
   const info = location.pathname === "/info";
-
-  useEffect(() => {
-    if (disabled.length === 0) {
-      setActive(true);
-    } else {
-      setActive(false);
-    }
-  }, [disabled]);
 
   useEffect(() => {
     if (genres) {
@@ -46,11 +37,12 @@ const PrevNext = () => {
 
   const handleRoute = () => {
     history.push(`${path}`);
+    dispatch(flag(false));
   };
 
   const handleBack = () => {
     history.goBack();
-    setRoute("/");
+
     dispatch(addNew(false));
     dispatch(setSubgenre(""));
   };
@@ -61,7 +53,6 @@ const PrevNext = () => {
         className="m-1 rounded"
         variant="outline-dark"
         disabled={genres}
-        active={!subgenre && !disabled.length}
         onClick={handleBack}
         style={{ width: "120px" }}
       >
@@ -72,7 +63,7 @@ const PrevNext = () => {
       <Button
         className="m-1 rounded"
         variant="outline-dark"
-        disabled={active}
+        disabled={!flagmark}
         active={selected >= 0}
         onClick={handleRoute}
         style={{ width: "120px" }}

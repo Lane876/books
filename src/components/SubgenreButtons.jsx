@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Button, Col, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import books from "../data";
-import { addNew, setSubgenre } from "../redux/actions";
+import { addNew, flag, setSubgenre } from "../redux/actions";
 
 const SubgenreButtons = () => {
   const [id, setId] = useState("");
@@ -15,11 +15,13 @@ const SubgenreButtons = () => {
     setAddNewActive("");
     dispatch(setSubgenre(i));
     dispatch(addNew(false));
+    dispatch(flag(true));
   };
 
   const handleAdd = () => {
     setAddNewActive(true);
     dispatch(addNew(true));
+    dispatch(flag(true));
   };
 
   return (

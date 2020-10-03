@@ -1,4 +1,4 @@
-import { SET_ACTIVE, SET_SUBGENRE } from "./types";
+import { SET_ACTIVE } from "./types";
 
 const initialState = {
   active: "",
