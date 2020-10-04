@@ -5,7 +5,7 @@ import { Link, useHistory } from "react-router-dom";
 import books from "../data";
 import { addNew, flag, getCheck, setSubgenre } from "../redux/actions";
 import Modal from "react-modal";
-import nock from "nock";
+import fakeFetch from "fake-browser-fetch";
 
 Modal.setAppElement("#root");
 
@@ -54,25 +54,17 @@ const InfoInput = () => {
     e.preventDefault();
     let content = values;
 
-    // fetch("https://reqres.in/api/users", {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify({ content }),
-    // })
-    //   .then((res) => {
-    //     return res.json();
-    //   })
-    //   .then((data) => console.log(data))
-    //   .catch((error) => console.log(error));
+    fakeFetch([
+      {
+        request: "/api/someurl",
+        response: new Response(JSON.stringify(content)),
+        delay: 1000,
+      },
+    ]);
 
-    const scope = () =>
-      nock("https://api.github.com")
-        .post({ content })
-        .reply(200, console.log(content));
-
-    scope();
+    fetch("/api/someurl")
+      .then((res) => res.json())
+      .then((data) => console.log(data));
 
     setValues(initialState);
     if (values.desc.length > 0) {

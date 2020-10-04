@@ -26,7 +26,7 @@ const SubgenreButtons = () => {
   };
 
   return (
-    <div className="pt-3 genresBtn">
+    <div className="pt-3 subgenresBtn">
       {books.map(
         (book) =>
           bookid === book.id &&
@@ -35,7 +35,7 @@ const SubgenreButtons = () => {
               <Col xl={3} md={3} lg={3} sm={3} xs={3}>
                 <Button
                   variant="outline-dark"
-                  className="m-1 rounded genresBtn text-center"
+                  className="m-1 rounded  text-center"
                   onClick={() => handleClick(i)}
                   active={id === i && !addNewActive ? "active" : false}
                 >
