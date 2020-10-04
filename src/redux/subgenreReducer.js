@@ -8,8 +8,9 @@ const subgenreReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_SUBGENRE:
       return { ...state, subgenre: action.payload };
+    default:
+      return state;
   }
-  return state;
 };
 
 export default subgenreReducer;

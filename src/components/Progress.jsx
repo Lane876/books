@@ -6,7 +6,7 @@ import { getRoute } from "../redux/actions";
 
 const Progress = () => {
   const history = useHistory();
-  // const isAdd = useSelector((state) => state.addnew.addnew);
+  const addsubgerne = useSelector((state) => state.addsubgerne.addsubgerne);
   const dispatch = useDispatch();
   const location = useLocation();
   const genre = location.pathname === "/";
@@ -117,7 +117,7 @@ const Progress = () => {
                 alignItems: "center",
               }}
               variant="outline-dark"
-              disabled={!addnew && !info}
+              disabled={!addnew && !addsubgerne}
               active={addnew}
               onClick={() => history.push("/addnew")}
             >

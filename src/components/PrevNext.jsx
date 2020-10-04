@@ -1,6 +1,5 @@
 import React from "react";
 import { useEffect } from "react";
-// import { useState } from "react";
 import { Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useLocation } from "react-router-dom";
@@ -8,7 +7,6 @@ import { addNew, setSubgenre, getRoute, flag } from "../redux/actions";
 
 const PrevNext = () => {
   const selected = useSelector((state) => state.subgenre.subgenre);
-  const disabled = useSelector((state) => state.active.active);
   const addnew = useSelector((state) => state.addnew.addnew);
   const path = useSelector((state) => state.route.route);
   const flagmark = useSelector((state) => state.flag.flag);
@@ -35,14 +33,13 @@ const PrevNext = () => {
     }
   }, [genres, subgenre, addnew, addsubgenre, dispatch]);
 
-  const handleRoute = () => {
+  const handleRoute = (e) => {
     history.push(`${path}`);
     dispatch(flag(false));
   };
 
   const handleBack = () => {
     history.goBack();
-
     dispatch(addNew(false));
     dispatch(setSubgenre(""));
   };

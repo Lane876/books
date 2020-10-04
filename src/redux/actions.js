@@ -5,6 +5,7 @@ import {
   SET_ROUTE,
   GET_CHECK,
   GET_FLAG,
+  GET_SUBGERNE,
 } from "./types";
 
 export const setGenreId = (active) => {
@@ -40,6 +41,12 @@ export const getCheck = (data) => {
 export const flag = (data) => {
   return {
     type: GET_FLAG,
+    payload: data,
+  };
+};
+export const addSubgenre = (data) => {
+  return {
+    type: GET_SUBGERNE,
     payload: data,
   };
 };

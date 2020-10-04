@@ -2,14 +2,12 @@ import React, { useEffect, useState } from "react";
 import { InputGroup, FormControl, Form } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import books from "../data";
-import { addNew, flag, getCheck } from "../redux/actions";
+import { addNew, addSubgenre, flag, getCheck } from "../redux/actions";
 
 const Input = () => {
   const [check, setCheck] = useState(false);
-  const [input, setInput] = useState("");
   const dispatch = useDispatch();
   const genreid = useSelector((state) => state.active.active);
-  const checkiftrue = useSelector((state) => state.check.check);
 
   useEffect(() => {
     dispatch(addNew(false));
@@ -19,30 +17,25 @@ const Input = () => {
         (book) =>
           book.id === genreid &&
           book.subgenres.map((book) =>
-            dispatch(getCheck(book.isDescriptionRequired === check))
+            dispatch(getCheck((book.isDescriptionRequired = check)))
           )
       );
 
     getReq();
-  }, [check]);
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("submitted");
-  };
+  }, [check, dispatch, genreid]);
 
   const handleCheck = () => {
     setCheck(!check);
-    // dispatch(flag(true));
+    dispatch(getCheck(check));
   };
 
   const handleChange = (e) => {
-    setInput(e.target.value);
     dispatch(flag(true));
+    dispatch(addSubgenre(e.target.value));
   };
 
   return (
-    <Form onSubmit={handleSubmit}>
+    <Form>
       <InputGroup className="mb-3 rounded pt-3">
         <FormControl
           placeholder="Subgenre name"

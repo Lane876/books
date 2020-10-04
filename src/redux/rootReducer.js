@@ -1,6 +1,7 @@
 import { combineReducers } from "redux";
 import activeReducer from "./activeReducer";
 import addNewReducer from "./addNewReducer";
+import addSubgerneReducer from "./addSubgerneReducer";
 import checkReducer from "./checkReducer";
 import flagReducer from "./flagReducer";
 import routeReducer from "./routeReducer";
@@ -13,6 +14,7 @@ const rootReducer = combineReducers({
   route: routeReducer,
   check: checkReducer,
   flag: flagReducer,
+  addsubgerne: addSubgerneReducer,
 });
 
 export default rootReducer;

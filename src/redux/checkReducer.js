@@ -8,8 +8,10 @@ const checkReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_CHECK:
       return { ...state, check: action.payload };
+
+    default:
+      return state;
   }
-  return state;
 };
 
 export default checkReducer;

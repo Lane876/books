@@ -23,24 +23,14 @@ const Genres = () => {
   };
 
   return (
-    <div
-      className="pt-3"
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        flexWrap: "wrap",
-      }}
-    >
+    <div className="pt-3 genresBtn">
       {books.map((book) => (
         <Col key={book.id} xl={3} md={3} lg={3} sm={3} xs={3}>
           <Button
             variant="outline-dark"
-            className="m-1 rounded h-60 w-100"
+            className="m-1 rounded  text-center genresBtn"
             onClick={() => handleId(book.id)}
             active={id === book.id ? "active" : false}
-            style={{
-              margin: "0 auto",
-            }}
           >
             {" "}
             {book.name}

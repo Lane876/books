@@ -8,8 +8,9 @@ const addNewReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_NEW:
       return { ...state, addnew: action.payload };
+    default:
+      return state;
   }
-  return state;
 };
 
 export default addNewReducer;

@@ -18,6 +18,17 @@ body {
 .info {
   min-width: 700px;
   width: 700px;
-
   padding: 3rem;
+}
+
+.infoadd {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.genresBtn {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 }
