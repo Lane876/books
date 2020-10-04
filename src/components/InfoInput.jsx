@@ -5,6 +5,7 @@ import { Link, useHistory } from "react-router-dom";
 import books from "../data";
 import { addNew, flag, getCheck, setSubgenre } from "../redux/actions";
 import Modal from "react-modal";
+import nock from "nock";
 
 Modal.setAppElement("#root");
 
@@ -52,9 +53,27 @@ const InfoInput = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     let content = values;
-    fetch("https://jsonplaceholder.typicode.com/todos/1")
-      .then((response) => response.json())
-      .then((json) => console.log(content));
+
+    // fetch("https://reqres.in/api/users", {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify({ content }),
+    // })
+    //   .then((res) => {
+    //     return res.json();
+    //   })
+    //   .then((data) => console.log(data))
+    //   .catch((error) => console.log(error));
+
+    const scope = () =>
+      nock("https://api.github.com")
+        .post({ content })
+        .reply(200, console.log(content));
+
+    scope();
+
     setValues(initialState);
     if (values.desc.length > 0) {
       setIsTrue(false);
@@ -86,15 +105,13 @@ const InfoInput = () => {
           value={values.title}
           onChange={handleInput}
           aria-describedby="basic-addon2"
-          className="rounded"
-          style={{ outlineColor: "gray", border: "1px solid gray" }}
+          className="rounded inputStyle"
         />
       </InputGroup>
       <Form.Label>Author</Form.Label>
       <Form.Control
         as="select"
-        className="rounded"
-        style={{ outlineColor: "gray", border: "1px solid gray" }}
+        className="rounded inputStyle"
         name="author"
         value={values.author}
         onChange={handleInput}
@@ -111,16 +128,14 @@ const InfoInput = () => {
           onChange={handleInput}
           value={values.isbn}
           aria-describedby="basic-addon2"
-          className="rounded"
-          style={{ outlineColor: "gray", border: "1px solid gray" }}
+          className="rounded inputStyle"
         />
       </InputGroup>
 
       <Form.Label className="pt-2">Publisher</Form.Label>
       <Form.Control
         as="select"
-        className="rounded"
-        style={{ outlineColor: "gray", border: "1px solid gray" }}
+        className="rounded inputStyle"
         name="publisher"
         onChange={handleInput}
         value={values.publisher}
@@ -134,11 +149,7 @@ const InfoInput = () => {
           placeholder="Date"
           label="Date"
           aria-describedby="basic-addon2"
-          className="rounded"
-          style={{
-            outlineColor: "gray",
-            border: "1px solid gray",
-          }}
+          className="rounded inputStyle"
           name="date"
           onChange={handleInput}
           value={values.date}
@@ -151,8 +162,7 @@ const InfoInput = () => {
           placeholder="Number of pages"
           label="Number of pages"
           aria-describedby="basic-addon2"
-          className="rounded"
-          style={{ outlineColor: "gray", border: "1px solid gray" }}
+          className="rounded inputStyle"
           name="numofpages"
           onChange={handleInput}
           value={values.numofpages}
@@ -162,12 +172,7 @@ const InfoInput = () => {
       <Form.Label className="pt-2">Format</Form.Label>
       <Form.Control
         as="select"
-        className="rounded"
-        style={{
-          outlineColor: "gray",
-          border: "1px solid gray",
-          width: "300px",
-        }}
+        className="rounded inputStyle"
         name="format"
         onChange={handleInput}
         value={values.format}
@@ -182,11 +187,7 @@ const InfoInput = () => {
               placeholder="Edition"
               label="Edition"
               aria-describedby="basic-addon2"
-              className="rounded"
-              style={{
-                outlineColor: "gray",
-                border: "1px solid gray",
-              }}
+              className="rounded inputStyle"
               name="edition"
               onChange={handleInput}
               value={values.edition}
@@ -198,8 +199,7 @@ const InfoInput = () => {
           <InputGroup className="rounded" style={{ width: "200px" }}>
             <Form.Control
               as="select"
-              className="rounded"
-              style={{ outlineColor: "gray", border: "1px solid gray" }}
+              className="rounded inputStyle"
               name="language"
               onChange={handleInput}
               value={values.language}
@@ -216,11 +216,7 @@ const InfoInput = () => {
           as="textarea"
           rows={3}
           placeholder="Type the description..."
-          className="rounded"
-          style={{
-            outlineColor: "gray",
-            border: "1px solid gray",
-          }}
+          className="rounded inputStyle"
           name="desc"
           onChange={handleInput}
           value={values.desc}
@@ -273,15 +269,7 @@ const InfoInput = () => {
             },
           }}
         >
-          <div
-            style={{
-              width: "100%",
-              display: "flex",
-              justifyContent: "center",
-              flexDirection: "column",
-              alignItems: "center",
-            }}
-          >
+          <div className="infoInputBtns">
             <i
               className="fas fa-check-circle"
               style={{ fontSize: "170px", padding: "1rem" }}

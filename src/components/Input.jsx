@@ -35,7 +35,7 @@ const Input = () => {
   };
 
   return (
-    <Form>
+    <Form className="input">
       <InputGroup className="mb-3 rounded pt-3">
         <FormControl
           placeholder="Subgenre name"

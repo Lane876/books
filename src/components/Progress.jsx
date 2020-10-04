@@ -18,25 +18,10 @@ const Progress = () => {
     <div className="p-3">
       <Row>
         <div style={{ display: "flex" }}>
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-              flexDirection: "column",
-            }}
-          >
+          <div className="progressBtnAndTitle">
             <Link to="/" style={{ textDecoration: "none" }}>
               <Button
-                style={{
-                  borderRadius: "50%",
-                  fontSize: "1rem",
-                  width: "50px",
-                  height: "50px",
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
+                className="progressBtn"
                 variant="outline-dark"
                 active={genre}
                 onClick={() => dispatch(getRoute("/"))}
@@ -46,36 +31,10 @@ const Progress = () => {
             </Link>
             <div>Genre</div>
           </div>
-          <div
-            style={{
-              width: "80px",
-              height: "1px",
-              border: ".5px solid gray",
-              display: "flex",
-              alignSelf: "center",
-              justifyContent: "center",
-              marginTop: "-22px",
-              marginLeft: "8px",
-            }}
-          />
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              flexDirection: "column",
-            }}
-          >
+          <div className="firstConnectLine" />
+          <div className="progressBtnAndTitle">
             <Button
-              style={{
-                borderRadius: "50%",
-                fontSize: "1rem",
-                width: "50px",
-                height: "50px",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-              }}
+              className="progressBtn"
               variant="outline-dark"
               disabled={genre}
               active={subgenre}
@@ -86,36 +45,10 @@ const Progress = () => {
 
             <div>Subgenre</div>
           </div>
-          <div
-            style={{
-              width: "80px",
-              height: "1px",
-              border: ".5px solid gray",
-              display: "flex",
-              alignSelf: "center",
-              justifyContent: "center",
-              marginTop: "-22px",
-              marginRight: "-36px",
-            }}
-          />
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              flexDirection: "column",
-            }}
-          >
+          <div className="secondConnectLine" />
+          <div className="progressBtnAndTitle">
             <Button
-              style={{
-                borderRadius: "50%",
-                fontSize: "1rem",
-                width: "50px",
-                height: "50px",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-              }}
+              className="progressBtn"
               variant="outline-dark"
               disabled={!addnew && !addsubgerne}
               active={addnew}
@@ -131,37 +64,10 @@ const Progress = () => {
 
           {addnew ? (
             <>
-              <div
-                style={{
-                  width: "80px",
-                  height: "1px",
-                  border: ".5px solid gray",
-                  display: "flex",
-                  alignSelf: "center",
-                  justifyContent: "center",
-                  marginTop: "-22px",
-                  marginLeft: "-36px",
-                  marginRight: "-8px",
-                }}
-              />
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  flexDirection: "column",
-                }}
-              >
+              <div className="secondConnectLine" />
+              <div className="progressBtnAndTitle">
                 <Button
-                  style={{
-                    borderRadius: "50%",
-                    fontSize: "1rem",
-                    width: "50px",
-                    height: "50px",
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                  }}
+                  className="progressBtn"
                   variant="outline-dark"
                   disabled={!info}
                   active={info}
@@ -173,37 +79,10 @@ const Progress = () => {
             </>
           ) : info ? (
             <>
-              <div
-                style={{
-                  width: "80px",
-                  height: "1px",
-                  border: ".5px solid gray",
-                  display: "flex",
-                  alignSelf: "center",
-                  justifyContent: "center",
-                  marginTop: "-22px",
-                  marginLeft: "-36px",
-                  marginRight: "-8px",
-                }}
-              />
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  flexDirection: "column",
-                }}
-              >
+              <div className="thirdConnectLine" />
+              <div className="progressBtnAndTitle">
                 <Button
-                  style={{
-                    borderRadius: "50%",
-                    fontSize: "1rem",
-                    width: "50px",
-                    height: "50px",
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                  }}
+                  className="progressBtn"
                   variant="outline-dark"
                   disabled={!info}
                   active={info}
