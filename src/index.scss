@@ -9,13 +9,13 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  min-width: 700px;
+  width: 700px;
 }
 .white {
   color: white;
 }
 .info {
-  min-width: 700px;
+  width: 700px;
   padding: 3rem;
 }
 
@@ -98,4 +98,16 @@ body {
 .inputStyle {
   outline-color: gray;
   border: 1px solid gray;
+}
+
+.connectline {
+  width: 80px;
+  height: 1px;
+  border: 0.5px solid gray;
+  display: flex;
+  align-self: center;
+  justify-content: center;
+  margin-top: -22px;
+  margin-left: -36px;
+  margin-right: -8px;
 }

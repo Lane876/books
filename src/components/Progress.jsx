@@ -2,7 +2,7 @@ import React from "react";
 import { Button, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useHistory, useLocation } from "react-router-dom";
-import { getRoute } from "../redux/actions";
+import { addSubgenre, getRoute } from "../redux/actions";
 
 const Progress = () => {
   const history = useHistory();
@@ -14,6 +14,14 @@ const Progress = () => {
   const addnew = location.pathname === "/addnew";
   const info = location.pathname === "/info";
 
+  const handleBack = () => {
+    dispatch(getRoute("/"));
+    dispatch(addSubgenre(""));
+  };
+  const handleBack2 = () => {
+    history.push("/subgenre");
+    dispatch(addSubgenre(""));
+  };
   return (
     <div className="p-3">
       <Row>
@@ -24,7 +32,7 @@ const Progress = () => {
                 className="progressBtn"
                 variant="outline-dark"
                 active={genre}
-                onClick={() => dispatch(getRoute("/"))}
+                onClick={handleBack}
               >
                 1
               </Button>
@@ -38,7 +46,7 @@ const Progress = () => {
               variant="outline-dark"
               disabled={genre}
               active={subgenre}
-              onClick={() => history.push("/subgenre")}
+              onClick={handleBack2}
             >
               2
             </Button>
@@ -64,7 +72,7 @@ const Progress = () => {
 
           {addnew ? (
             <>
-              <div className="secondConnectLine" />
+              <div className={addnew ? "connectline" : "secondConnectLine"} />
               <div className="progressBtnAndTitle">
                 <Button
                   className="progressBtn"

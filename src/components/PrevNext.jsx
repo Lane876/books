@@ -3,7 +3,13 @@ import { useEffect } from "react";
 import { Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useLocation } from "react-router-dom";
-import { addNew, setSubgenre, getRoute, flag } from "../redux/actions";
+import {
+  addNew,
+  setSubgenre,
+  getRoute,
+  flag,
+  addSubgenre,
+} from "../redux/actions";
 
 const PrevNext = () => {
   const selected = useSelector((state) => state.subgenre.subgenre);
@@ -42,6 +48,7 @@ const PrevNext = () => {
     history.goBack();
     dispatch(addNew(false));
     dispatch(setSubgenre(""));
+    dispatch(addSubgenre(""));
   };
 
   return (
