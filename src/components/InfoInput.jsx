@@ -3,7 +3,13 @@ import { Form, InputGroup, FormControl, Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 import books from "../data";
-import { addNew, flag, getCheck, setSubgenre } from "../redux/actions";
+import {
+  addNew,
+  addSubgenre,
+  flag,
+  getCheck,
+  setSubgenre,
+} from "../redux/actions";
 import Modal from "react-modal";
 import fakeFetch from "fake-browser-fetch";
 
@@ -109,6 +115,12 @@ const InfoInput = () => {
         onChange={handleInput}
       >
         <option>Author</option>
+        <option>William Shakespeare</option>
+        <option>Agatha Christie</option>
+        <option>Barbara Cartland</option>
+        <option>Danielle Steel</option>
+        <option>Harold Robbins</option>
+        <option>J. K. Rowling</option>
       </Form.Control>
 
       <Form.Label className="pt-2">ISBN</Form.Label>
@@ -133,6 +145,11 @@ const InfoInput = () => {
         value={values.publisher}
       >
         <option>Publisher</option>
+        <option>Penguin Random House</option>
+        <option>Hachette Livre</option>
+        <option>HarperCollins</option>
+        <option>Macmillan Publishers</option>
+        <option>Simon & Schuster</option>
       </Form.Control>
       <Form.Label className="pt-2">Date Published</Form.Label>
       <InputGroup className="rounded" style={{ width: "300px" }}>
@@ -197,6 +214,11 @@ const InfoInput = () => {
               value={values.language}
             >
               <option>Edition language</option>
+              <option>English</option>
+              <option>German</option>
+              <option>French</option>
+              <option>Italian</option>
+              <option>Serbian</option>
             </Form.Control>
           </InputGroup>
         </div>
@@ -268,7 +290,12 @@ const InfoInput = () => {
             ></i>
             <p className="p-2 ">Book added successfully</p>
             <Link to="/">
-              <Button className="m-1 rounded">Add another book</Button>
+              <Button
+                className="m-1 rounded"
+                onClick={() => dispatch(addSubgenre(""))}
+              >
+                Add another book
+              </Button>
             </Link>
           </div>
         </Modal>
